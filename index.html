@@ -9,12 +9,22 @@
     }
 }
 
+
 // If we have a successful location update
 function onGeoSuccess(event)
 {
     document.getElementById("Latitude").value =  event.coords.latitude; 
     document.getElementById("Longitude").value = event.coords.longitude;
-
+	document.getElementById("Accuracy").value = event.coords.accuracy;
+	document.getElementById("Altitude").value = event.coords.altitude;
+	document.getElementById("Altitude Accuracy").value = event.coords.altitudeAccuracy;
+	document.getElementById("Heading").value = event.coords.heading;
+	document.getElementById("Speed").value = event.coords.speed;
+	var unixtime = new Date(event.timestamp);
+	var date = unixtime.toDateString();
+	var time = unixtime.toTimeString();
+	document.getElementById("Timestamp").value = time;
+	document.getElementById("Date").value = date;
 }
 
 // If something has gone wrong with the geolocation request
@@ -29,6 +39,20 @@ function onGeoError(event)
  Latitude: <input type="text" id="Latitude" name="Latitude" value="">
  <br><br>
  Longitude: <input type="text" id="Longitude" name="Longitude" value="">
+ <br><br>
+  Accuracy: <input type="text" id="Accuracy" name="Accuracy" value="">
+ <br><br>
+  Altitude: <input type="text" id="Altitude" name="Altitude" value="">
+ <br><br>
+  Altitude Accuracy: <input type="text" id="Altitude Accuracy" name="Altitude Accuracy" value="">
+ <br><br>
+  Heading: <input type="text" id="Heading" name="Heading" value="">
+ <br><br>
+  Speed: <input type="text" id="Speed" name="Speed" value="">
+ <br><br>
+  Timestamp: <input type="time" id="Timestamp" name="Timestamp" value="">
+ <br><br>
+   Date: <input type="text" id="Date" name="Date" value="">
  <br><br>
  <input type="button" value="Get Location" onclick="getLocationConstant()"/>
  <br><br>
